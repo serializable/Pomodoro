@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pomodoro", "Pomodoro\Pomodoro.csproj", "{F8EB127E-3A1C-4210-9E92-8A491DF1EC66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B008D2FC-8392-40A9-B79D-461519EE44CD}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		Pomodoro.vsmdi = Pomodoro.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pomodoro.WP7Test", "Pomodoro.WP7Test\Pomodoro.WP7Test.csproj", "{0C62B03A-024A-46AA-B118-A6E25EE088C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecutableSpecification", "ExecutableSpecification\ExecutableSpecification.csproj", "{C399EE45-46E1-4066-BF29-99DAA040BCC5}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Pomodoro.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8EB127E-3A1C-4210-9E92-8A491DF1EC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8EB127E-3A1C-4210-9E92-8A491DF1EC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8EB127E-3A1C-4210-9E92-8A491DF1EC66}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F8EB127E-3A1C-4210-9E92-8A491DF1EC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8EB127E-3A1C-4210-9E92-8A491DF1EC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8EB127E-3A1C-4210-9E92-8A491DF1EC66}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0C62B03A-024A-46AA-B118-A6E25EE088C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C62B03A-024A-46AA-B118-A6E25EE088C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C62B03A-024A-46AA-B118-A6E25EE088C4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0C62B03A-024A-46AA-B118-A6E25EE088C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C62B03A-024A-46AA-B118-A6E25EE088C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C62B03A-024A-46AA-B118-A6E25EE088C4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C399EE45-46E1-4066-BF29-99DAA040BCC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C399EE45-46E1-4066-BF29-99DAA040BCC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C399EE45-46E1-4066-BF29-99DAA040BCC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C399EE45-46E1-4066-BF29-99DAA040BCC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
