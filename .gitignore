@@ -1,5 +1,11 @@
 bin
 obj
 _ReSharper.*
-*.ReSharper.user
 TestResults
+*.csproj.user
+*.[Rr]e[Ss]harper.user
+*.resharper
+*.suo
+*.cache
+*~
+*.swp
