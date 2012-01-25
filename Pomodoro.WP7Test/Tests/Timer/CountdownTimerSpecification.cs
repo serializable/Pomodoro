@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading;
-using System.Windows;
 using ExecutableSpecfication;
 using ExecutableSpecification;
 using Microsoft.Silverlight.Testing;
@@ -15,131 +13,131 @@ namespace Pomodoro.WP7Test.Tests.Timer
         {
             return new CountdownTimer();
         }
-    }
 
-    [TestClass]
-    public class When_I_construct_the_timer : CountdownTimerSpecfication
-    {
-        [TestMethod]
-        [Tag("Specification")]
-        public void it_should_read_the_default_time()
+        [TestClass]
+        public class When_the_timer_is_constructed : CountdownTimerSpecfication
         {
-            Sut.RemainingTime.ShouldEqual(new TimeSpan(0, 0, 25, 0));
-        }
-    }
-
-    [TestClass]
-    public class When_I_start_the_timer : CountdownTimerSpecfication
-    {
-        private bool _tickCallbackHasBeenCalled;
-        private TimeSpan _remainingTime;
-        private CountdownTimer _eventSender;
-
-        protected override void GivenThat()
-        {
-            _tickCallbackHasBeenCalled = false;
-            _remainingTime = new TimeSpan();
-            _eventSender = null;
-            Sut.Tick += (o, e) =>
-                            {
-                                _tickCallbackHasBeenCalled = true;
-                                _remainingTime = e.RemainingTime;
-                                _eventSender = o as CountdownTimer;
-                            };
-        }
-
-        protected override void BecauseOf()
-        {
-            Sut.Start();
-        }
-
-        [TestMethod]
-        [Tag("Specification")]
-        [Asynchronous]
-        public void It_should_raise_the_tick_event_after_a_while()
-        {
-            EnqueueConditional(() => _tickCallbackHasBeenCalled);
-            EnqueueCallback(() => _tickCallbackHasBeenCalled.ShouldBeTrue());
-            EnqueueTestComplete();
-        }
-
-        [TestMethod]
-        [Tag("Specification")]
-        [Asynchronous]
-        public void It_should_pass_itself_as_the_sender_with_the_tick_event()
-        {
-            EnqueueConditional(() => _tickCallbackHasBeenCalled);
-            EnqueueCallback(() => _eventSender.ShouldEqual(Sut));
-            EnqueueTestComplete();
-        }
-
-        [TestMethod]
-        [Tag("Specification")]
-        [Asynchronous]
-        public void It_should_read_less_than_default_on_tick()
-        {
-            EnqueueConditional(() => _tickCallbackHasBeenCalled);
-            EnqueueCallback(() => _remainingTime.ShouldBeLessThan(TimeSpan.FromMinutes(25)));
-            EnqueueTestComplete();
-        }
-    }
-
-    [TestClass]
-    public class When_I_stop_the_timer : CountdownTimerSpecfication
-    {
-        private bool _tickCallbackHasBeenCalled;
-
-        protected override void GivenThat()
-        {
-            _tickCallbackHasBeenCalled = false;
-            Sut.Tick += (o, e) =>
+            [TestMethod]
+            [Tag("Specification")]
+            public void It_should_read_the_default_time()
             {
-                _tickCallbackHasBeenCalled = true;
-            };
-            Sut.Start();
+                Sut.RemainingTime.ShouldEqual(new TimeSpan(0, 0, 25, 0));
+            }
         }
 
-        [Asynchronous]
-        protected override void BecauseOf()
+        [TestClass]
+        public class When_the_timer_is_started : CountdownTimerSpecfication
         {
-            Sut.Stop();
+            private bool _tickCallbackHasBeenCalled;
+            private TimeSpan _remainingTime;
+            private CountdownTimer _eventSender;
+
+            protected override void GivenThat()
+            {
+                _tickCallbackHasBeenCalled = false;
+                _remainingTime = new TimeSpan();
+                _eventSender = null;
+                Sut.Tick += (o, e) =>
+                                {
+                                    _tickCallbackHasBeenCalled = true;
+                                    _remainingTime = e.RemainingTime;
+                                    _eventSender = o as CountdownTimer;
+                                };
+            }
+
+            protected override void BecauseOf()
+            {
+                Sut.Start();
+            }
+
+            [TestMethod]
+            [Tag("Specification")]
+            [Asynchronous]
+            public void It_should_raise_the_tick_event_after_a_while()
+            {
+                EnqueueConditional(() => _tickCallbackHasBeenCalled);
+                EnqueueCallback(() => _tickCallbackHasBeenCalled.ShouldBeTrue());
+                EnqueueTestComplete();
+            }
+
+            [TestMethod]
+            [Tag("Specification")]
+            [Asynchronous]
+            public void It_should_pass_itself_as_the_sender_with_the_tick_event()
+            {
+                EnqueueConditional(() => _tickCallbackHasBeenCalled);
+                EnqueueCallback(() => _eventSender.ShouldEqual(Sut));
+                EnqueueTestComplete();
+            }
+
+            [TestMethod]
+            [Tag("Specification")]
+            [Asynchronous]
+            public void It_should_read_less_than_default_on_tick()
+            {
+                EnqueueConditional(() => _tickCallbackHasBeenCalled);
+                EnqueueCallback(() => _remainingTime.ShouldBeLessThan(TimeSpan.FromMinutes(25)));
+                EnqueueTestComplete();
+            }
         }
 
-        [TestMethod]
-        [Asynchronous]
-        [Tag("Specification")]
-        public void It_should_stop_raising_tick_events()
+        [TestClass]
+        public class When_the_timer_is_stopped : CountdownTimerSpecfication
         {
-            EnqueueCallback(() => _tickCallbackHasBeenCalled.ShouldBeFalse());
-            EnqueueTestComplete();
-        }
-    }
+            private bool _tickCallbackHasBeenCalled;
 
-    [TestClass]
-    public class When_I_restart_the_timer : CountdownTimerSpecfication
-    {
-        protected override void GivenThat()
-        {
-            Sut.Start();
+            protected override void GivenThat()
+            {
+                _tickCallbackHasBeenCalled = false;
+                Sut.Tick += (o, e) =>
+                {
+                    _tickCallbackHasBeenCalled = true;
+                };
+                Sut.Start();
+            }
+
+            [Asynchronous]
+            protected override void BecauseOf()
+            {
+                Sut.Stop();
+            }
+
+            [TestMethod]
+            [Asynchronous]
+            [Tag("Specification")]
+            public void It_should_stop_raising_tick_events()
+            {
+                EnqueueCallback(() => _tickCallbackHasBeenCalled.ShouldBeFalse());
+                EnqueueTestComplete();
+            }
         }
 
-        [Asynchronous]
-        protected override void BecauseOf()
+        [TestClass]
+        public class When_the_timer_is_restarted : CountdownTimerSpecfication
         {
-            Sut.Stop();
-            Sut.Start();
-        }
+            protected override void GivenThat()
+            {
+                Sut.Start();
+            }
 
-        [TestMethod]
-        [Tag("Specification")]
-        [Asynchronous]
-        public void It_should_reset_the_remaining_time_to_detault()
-        {
-            EnqueueDelay(TimeSpan.FromSeconds(2));
-            EnqueueCallback(() => Sut.Stop());
-            EnqueueCallback(() => Sut.Start());
-            EnqueueCallback(() => Sut.RemainingTime.ShouldEqual(TimeSpan.FromMinutes(25)));
-            EnqueueTestComplete();
+            [Asynchronous]
+            protected override void BecauseOf()
+            {
+                Sut.Stop();
+                Sut.Start();
+            }
+
+            [TestMethod]
+            [Tag("Specification")]
+            [Asynchronous]
+            public void It_should_reset_the_remaining_time_to_detault()
+            {
+                EnqueueDelay(TimeSpan.FromSeconds(2));
+                EnqueueCallback(() => Sut.Stop());
+                EnqueueCallback(() => Sut.Start());
+                EnqueueCallback(() => Sut.RemainingTime.ShouldEqual(TimeSpan.FromMinutes(25)));
+                EnqueueTestComplete();
+            }
         }
     }
 }
