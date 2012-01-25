@@ -22,12 +22,12 @@ namespace Pomodoro
         public MainPage()
         {
             InitializeComponent();
+            _timer = new CountdownTimer();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
+            //DataContext = App.ViewModel;
+            DataContext = _timer;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
-
-            _timer = new CountdownTimer();
 
             SetButtonsState(TimerStatus.Stopped);
         }
@@ -85,6 +85,11 @@ namespace Pomodoro
         {
             Stopped = 0,
             Started
+        }
+
+        private void DoIt(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

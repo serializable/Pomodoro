@@ -18,6 +18,8 @@ namespace Pomodoro.Timer
     {
         public TimeSpan RemainingTime { get; private set; }
 
+        public string RemainingTimeText { get { return string.Format("{0:00}:{1:00}", RemainingTime.Minutes, RemainingTime.Seconds); } }
+
         public delegate void CountdownTimerEventHandler(object sender, CountdownTimerEventArgs eventArgs);
         public event CountdownTimerEventHandler Tick;
 

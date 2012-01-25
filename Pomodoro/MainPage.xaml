@@ -31,12 +31,15 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="51*" />
-                <RowDefinition Height="556*" />
+                <RowDefinition Height="114*" />
+                <RowDefinition Height="133*" />
+                <RowDefinition Height="360" />
             </Grid.RowDefinitions>
-            <TextBlock Name="txtTimer" Text="00:00" FontSize="78" Margin="99,0,78,500" Grid.RowSpan="2" />
-            <Button Content="Start" Height="72" HorizontalAlignment="Left" Margin="26,74,0,0" Name="butStartTimer" VerticalAlignment="Top" Width="160" Grid.Row="1" Click="butStartTimer_Click" />
-            <Button Content="Stop" Grid.Row="1" Height="72" HorizontalAlignment="Left" Margin="218,74,0,0" Name="butStopTimer" VerticalAlignment="Top" Width="160" Click="butStopTimer_Click" />
+            <TextBlock Name="txtTimer" Text="00:00" FontSize="78" Margin="99,0,78,14" />
+            <Button Content="Start" Height="72" IsEnabled="True" HorizontalAlignment="Left" Margin="47,30,0,0" Name="butStartTimer" VerticalAlignment="Top" Width="160" Grid.Row="1" Click="butStartTimer_Click" />
+            <Button Content="Stop" Grid.Row="1" Height="72" HorizontalAlignment="Left" Margin="239,30,0,0" Name="butStopTimer" VerticalAlignment="Top" Width="160" Click="butStopTimer_Click" />
+            <TextBlock Grid.Row="2" Height="30" HorizontalAlignment="Left" Margin="61,55,0,0" Name="textBlock1" Text="{Binding RemainingTimeText}" VerticalAlignment="Top" />
+            <Button Content="Button" IsEnabled="True" Click="DoIt" Grid.Row="2" Height="72" HorizontalAlignment="Left" Margin="257,188,0,0" Name="button1" VerticalAlignment="Top" Width="160" />
         </Grid>
     </Grid>
 
